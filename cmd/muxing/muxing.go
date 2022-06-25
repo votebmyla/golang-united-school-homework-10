@@ -7,6 +7,7 @@ import (
 	"os"
 	"strconv"
 
+	"github.com/GolangUnited/helloweb/handle"
 	"github.com/gorilla/mux"
 )
 
@@ -21,6 +22,8 @@ main function reads host/port from env just for an example, flavor it following 
 func Start(host string, port int) {
 	router := mux.NewRouter()
 
+	handleRoute(router)
+
 	log.Println(fmt.Printf("Starting API server on %s:%d\n", host, port))
 	if err := http.ListenAndServe(fmt.Sprintf("%s:%d", host, port), router); err != nil {
 		log.Fatal(err)
@@ -34,5 +37,10 @@ func main() {
 	if err != nil {
 		port = 8081
 	}
+	fmt.Println(host, port)
 	Start(host, port)
+}
+
+func handleRoute(router *mux.Router) {
+	router.HandleFunc("/name/{PARAM}", handle.HandleName).Methods(http.MethodGet)
 }
