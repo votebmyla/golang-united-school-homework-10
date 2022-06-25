@@ -41,5 +41,5 @@ func HandleHeader(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 	result := strconv.Itoa(a + b)
-	w.Header().Add("a+b", result)
+	w.Header().Set("a+b", result)
 }
