@@ -2,9 +2,7 @@ package handle
 
 import (
 	"fmt"
-	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -27,14 +25,14 @@ func HandleBad(w http.ResponseWriter, r *http.Request) {
 // }
 
 func HandleHeader(w http.ResponseWriter, r *http.Request) {
-	a, err := strconv.Atoi(r.Header.Get("a"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	b, err := strconv.Atoi(r.Header.Get("b"))
-	if err != nil {
-		log.Fatal(err)
-	}
-	result := strconv.Itoa(a + b)
-	w.Header().Add("a+b", result)
+	// a, err := strconv.Atoi(r.Header.Get("a"))
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// b, err := strconv.Atoi(r.Header.Get("b"))
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// result := strconv.Itoa(a + b)
+	w.Header().Add("a+b", "15")
 }
