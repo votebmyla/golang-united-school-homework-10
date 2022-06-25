@@ -2,6 +2,7 @@ package handle
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"strconv"
@@ -19,12 +20,16 @@ func HandleBad(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(500)
 }
 
-// func HandleData(w http.ResponseWriter, r *http.Request) {
-// 	data, err := ioutil.ReadAll(r.Body)
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// }
+func HandleData(w http.ResponseWriter, r *http.Request) {
+	data, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(string(data))
+	param := fmt.Sprintf("I got message:\n%s", string(data))
+
+	w.Write([]byte(param))
+}
 
 func HandleHeader(w http.ResponseWriter, r *http.Request) {
 	a, err := strconv.Atoi(r.Header.Get("a"))

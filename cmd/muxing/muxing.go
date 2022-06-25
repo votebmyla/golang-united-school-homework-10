@@ -44,5 +44,6 @@ func main() {
 func handleRoute(router *mux.Router) {
 	router.HandleFunc("/name/{PARAM}", handle.HandleName).Methods(http.MethodGet)
 	router.HandleFunc("/bad", handle.HandleBad).Methods(http.MethodGet)
+	router.HandleFunc("/data", handle.HandleData).Methods(http.MethodPost)
 	router.HandleFunc("/header", handle.HandleHeader).Methods(http.MethodGet)
 }
