@@ -12,3 +12,7 @@ func HandleName(w http.ResponseWriter, r *http.Request) {
 	s := fmt.Sprintf("Hello, %s!", p)
 	fmt.Fprint(w, s)
 }
+
+func HandleBad(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(500)
+}
